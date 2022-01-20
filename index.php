@@ -1,3 +1,17 @@
+
+<?php
+try {
+    $dbh = new PDO('mysql:host=localhost;dbname=affectation', 'root', '');
+    
+    
+} catch (PDOException $e) {
+    print "Erreur !: " . $e->getMessage() . "<br/>";
+    die();
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +24,7 @@
 <body>
 <section>
     <header>
-       <h1>Affectation opération aux Postes</h1>  
+        <h1>Affectation opération aux Postes</h1>  
     </header>
     <div class=" list-wrapper">
         <div>
@@ -26,26 +40,20 @@
                         <th>Statut</th>
                     </tr>
                 
-                
+                <?php
+                    foreach($dbh->query('SELECT * from agent') as $row) {
+                ?>            
                     <tr class="bodyt">
-                        <td>4</td>
-                        <td>Aimen</td>
-                        <td>Karabadji</td>
-                        <td>Aimen</td>
-                        <td>0553568974</td>
-                        <td>Actif</td>
+                        <td ><?php echo $row['id_agent']; ?></td>
+                        <td><?php echo $row['Username']; ?></td>
+                        <td><?php echo $row['Nom']; ?></td>
+                        <td><?php echo $row['Prénom']; ?></td>
+                        <td><?php echo $row['Mobile']; ?></td>
+                        <td><?php echo $row['Statut']; ?></td>
                     </tr>
-                
-                
-                    <tr class="bodyt">
-                        <td>6</td>
-                        <td>Mohamed</td>
-                        <td>nnn</td>
-                        <td>Amar</td>
-                        <td>0652342189</td>
-                        <td>Actif</td>
-                    </tr>
-                
+                    <?php
+                    }
+                    ?>
             </table>
         </div>
         <div>
@@ -58,16 +66,17 @@
                         <th>role</th>
                     </tr>
  
+                    <?php
+                    foreach($dbh->query('SELECT * from poste') as $row) {
+                ?>            
                     <tr class="bodyt">
-                        <td>Alfreds Futterkiste</td>
-                        <td>Maria Anders</td>
-                        <td>Germany</td>
+                        <td ><?php echo $row['Id_poste']; ?></td>
+                        <td><?php echo $row['Designation']; ?></td>
+                        <td><?php echo $row['Role']; ?></td>
                     </tr>
-                    <tr class="bodyt">
-                        <td>Alfreds Futterkiste</td>
-                        <td>Maria Anders</td>
-                        <td>Germany</td>
-                    </tr>
+                    <?php
+                    }
+                    ?>
                 
             </table>
         </div>
@@ -94,16 +103,25 @@
                     <th>Select</th>
                 </tr>
                 <tr>
-                    <td>4</td>
-                    <td>Aimen</td>
-                    <td>Karabadji</td>
-                    <td>Aimen</td>
-                    <td>0553568974</td>
-                    <td>Actif</td>
-                    <td>Alfreds Futterkiste</td>
-                    <td>Maria Anders</td>
-                    <td>Germany</td>
-                    <td><input type="checkbox"></td>
+                <?php
+                    foreach($dbh->query('SELECT * from agent,poste,affectation where affectation.Id_agent = agent.id_agent and affectation.Id_poste = poste.Id_poste;') as $row) {
+                ?>            
+                    <tr class="bodyt">
+                        <td ><?php echo $row['id_agent']; ?></td>
+                        <td><?php echo $row['Username']; ?></td>
+                        <td><?php echo $row['Nom']; ?></td>
+                        <td><?php echo $row['Prénom']; ?></td>
+                        <td><?php echo $row['Mobile']; ?></td>
+                        <td><?php echo $row['Statut']; ?></td>
+                        <td ><?php echo $row['Id_poste']; ?></td>
+                        <td><?php echo $row['Designation']; ?></td>
+                        <td><?php echo $row['Role']; ?></td>
+                        <td><input type="checkbox"></td>
+                    </tr>
+                    <?php
+                    }
+                    ?>
+                    
                 </tr>
                 
             </table>

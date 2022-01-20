@@ -19,9 +19,8 @@ for (let index = 0; index < tableD.length; index++) {
     })
 
     tableD[index].addEventListener('click', () => {
-                 Array.from(tableD[index].children).forEach(child => {
-                child.classList.add('highlight-click')
-                });
-       
+        Array.from(tableD[index].children).forEach(child => {
+        child.classList.add('highlight-click')
+        });
     })
 }
