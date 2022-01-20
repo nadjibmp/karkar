@@ -15,7 +15,7 @@
     <div class=" list-wrapper">
         <div>
             <h2>Liste Agents</h2>
-            <table style="width:100%" class="t-agent">
+            <table style="width:100%" class="t-agentposte">
                 
                     <tr>
                         <th>Id_Agent</th>
@@ -27,7 +27,7 @@
                     </tr>
                 
                 
-                    <tr>
+                    <tr class="bodyt">
                         <td>4</td>
                         <td>Aimen</td>
                         <td>Karabadji</td>
@@ -37,7 +37,7 @@
                     </tr>
                 
                 
-                    <tr>
+                    <tr class="bodyt">
                         <td>6</td>
                         <td>Mohamed</td>
                         <td>nnn</td>
@@ -50,21 +50,20 @@
         </div>
         <div>
             <h2>Liste des postes</h2>
-            <table style="width:100%" class="t-poste">
+            <table style="width:100%" class="t-agentposte">
                 
                     <tr>
                         <th>Id_poste</th>
                         <th>Designation</th>
                         <th>role</th>
                     </tr>
-                
-                
-                    <tr>
+ 
+                    <tr class="bodyt">
                         <td>Alfreds Futterkiste</td>
                         <td>Maria Anders</td>
                         <td>Germany</td>
                     </tr>
-                    <tr>
+                    <tr class="bodyt">
                         <td>Alfreds Futterkiste</td>
                         <td>Maria Anders</td>
                         <td>Germany</td>
